@@ -4,6 +4,7 @@ import org.automation.utility.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -15,31 +16,36 @@ public class BasePage {
 
     public BasePage(){
         this.driver= DriverFactory.getDriver();
+        //this intializes all @finby elements in child page classes
+        PageFactory.initElements(driver,this);
 
     }
     //explicitly wait is used
-    protected WebElement waitForElement(By locator) {
+    protected WebElement waitForElement(WebElement locator) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        return wait.until(ExpectedConditions.visibilityOf(locator));
     }
 
-    protected void click(By locator) {
+    protected void click(WebElement locator) {
         waitForElement(locator).click();
     }
 
-    protected void type(By locator, String text) {
-        WebElement element = waitForElement(locator);
-        element.clear();
-        element.sendKeys(text);
+    protected void type(WebElement locator, String text) {
+        waitForElement(locator);
+        locator.clear();
+        locator.sendKeys(text);
+
     }
 
-    protected String getText(By locator) {
-        return waitForElement(locator).getText();
+    protected String getText(WebElement locator) {
+        waitForElement(locator);
+        return locator.getText();
     }
 
-    protected boolean isDisplayed(By locator) {
+    protected boolean isDisplayed(WebElement locator) {
         try {
-            return waitForElement(locator).isDisplayed();
+            waitForElement(locator);
+            return locator.isDisplayed();
         } catch (Exception e) {
             return false;
         }
