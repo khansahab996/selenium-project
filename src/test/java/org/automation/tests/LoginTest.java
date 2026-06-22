@@ -1,8 +1,9 @@
 package org.automation.tests;
 
 import org.automation.pages.LoginPage;
-import org.junit.jupiter.api.Test;
+
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest{
 

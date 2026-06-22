@@ -10,7 +10,7 @@ import java.util.List;
 public class HomePage extends BasePage{
 
     // Page title text ("Products")
-    @FindBy(className = "title")
+    @FindBy(css = "span[data-test=\"title\"]")
     private WebElement pageTitle;
 
     // Shopping cart icon (top right)
@@ -30,7 +30,7 @@ public class HomePage extends BasePage{
     private List<WebElement> productNames;
 
     // All "Add to cart" buttons
-    @FindBy(css = "button[data-test^='add-to-cart']")
+    @FindBy(className = "btn_primary")
     private List<WebElement> addToCartButtons;
 
     public HomePage() {
@@ -66,7 +66,10 @@ public class HomePage extends BasePage{
 
     // Clicks "Add to cart" for a product by index (0 = first product)
     public void addProductToCartByIndex(int index) {
-        click(addToCartButtons.get(index));
+
+            click(addToCartButtons.get(index));
+
+
     }
 
     // Selects a sort option by visible text

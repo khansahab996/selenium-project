@@ -8,5 +8,10 @@
             <class name="org.automation.tests.LoginTest" />
         </classes>
     </test>
+    <test name="Home Tests">
+        <classes>
+            <class name="org.automation.tests.HomeTest" />
+        </classes>
+    </test>
 
 </suite>
