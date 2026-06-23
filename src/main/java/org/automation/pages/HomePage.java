@@ -78,4 +78,10 @@ public class HomePage extends BasePage{
         Select select = new Select(sortDropdown);
         select.selectByVisibleText(visibleText);
     }
+
+    //click on a product name to open its deatil page
+    public void clickProductByIndex(int index){
+        click(productNames.get(index));
+
+    }
 }

@@ -13,5 +13,10 @@
             <class name="org.automation.tests.HomeTest" />
         </classes>
     </test>
+    <test name="Page Tests">
+        <classes>
+            <class name="org.automation.tests.ProductTest" />
+        </classes>
+    </test>
 
 </suite>
