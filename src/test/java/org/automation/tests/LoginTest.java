@@ -1,13 +1,18 @@
 package org.automation.tests;
 
+import io.qameta.allure.*;
 import org.automation.pages.LoginPage;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+@Epic("SauceDemo Automation")
+@Feature("Login")
+public class LoginTest extends BaseTest {
 
-public class LoginTest extends BaseTest{
 
     @Test
+    @Story("valid login")
+    @Severity(SeverityLevel.BLOCKER) //application cannot be used if it fails
     public void teestValidLogin(){
         LoginPage login= new LoginPage();
         login.login("standard_user","secret_sauce");
@@ -16,6 +21,8 @@ public class LoginTest extends BaseTest{
     }
 
     @Test
+    @Story("invalid login")
+    @Severity(SeverityLevel.NORMAL)//important but not business-stopping { wrong error msg shown }
     public void testInvalidLogin(){
         LoginPage login= new LoginPage();
         login.login("admin","12345");
@@ -24,6 +31,8 @@ public class LoginTest extends BaseTest{
     }
 
     @Test
+    @Story("empty credentials")
+    @Severity(SeverityLevel.MINOR)//small issue
     public void testEmptyCredianls(){
         LoginPage login= new LoginPage();
         login.login(" "," ");
@@ -35,9 +44,11 @@ public class LoginTest extends BaseTest{
     }
 
     @Test
+    @Story("Locked out user")
+    @Severity(SeverityLevel.CRITICAL)// major functionality broken
     public void testLockedOutUser(){
         LoginPage login= new LoginPage();
-        login.login("locked_out_user","secret_sauce");
+        login.login("ocked_out_user","secret_sauce");
         Assert.assertTrue(login.iserrordisplayed(),"error message is displayed for locked out user");
         Assert.assertEquals(login.geterrorMessage(),"Epic sadface: Sorry, this user has been locked out.");
 

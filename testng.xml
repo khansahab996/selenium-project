@@ -4,6 +4,7 @@
 <suite name="SauceDemo Automation Suite" verbose="1">
     <listeners>
         <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+        <listener class-name="org.automation.listeners.TestListener"/>
     </listeners>
 
     <test name="Login Tests">

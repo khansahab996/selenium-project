@@ -1,5 +1,6 @@
 package org.automation.pages;
 
+import io.qameta.allure.Step;
 import org.automation.utility.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -26,10 +27,12 @@ public class BasePage {
         return wait.until(ExpectedConditions.visibilityOf(locator));
     }
 
+    @Step("click on element")
     protected void click(WebElement locator) {
         waitForElement(locator).click();
     }
 
+    @Step("Type'{1}' into element")
     protected void type(WebElement locator, String text) {
         waitForElement(locator);
         locator.clear();
@@ -37,6 +40,7 @@ public class BasePage {
 
     }
 
+    @Step("get text from element")
     protected String getText(WebElement locator) {
         waitForElement(locator);
         return locator.getText();

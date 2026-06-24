@@ -1,5 +1,6 @@
 package org.automation.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -36,6 +37,7 @@ public class LoginPage extends BasePage {
 
     }
 
+    @Step("Login with username '{0}' and password '{1}'")
     public void login(String username, String Password){
         enterUsername(username);
         enterPassword(Password);
